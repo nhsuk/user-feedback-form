@@ -1,0 +1,32 @@
+{
+  "name": "user-feedback-form",
+  "version": "0.0.1",
+  "description": "A form for collecting user feedback",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "npm run watch & npm run testserver",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testserver": "./node_modules/.bin/http-server",
+    "watch": "webpack --watch"
+  },
+  "author": "mike@mikemonteith.com",
+  "license": "ISC",
+  "peerDependencies": {
+    "nhsuk-frontend": "^3.0.3"
+  },
+  "devDependencies": {
+    "nhsuk-frontend": "^3.0.3"
+  },
+  "dependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-loader": "^8.0.6",
+    "http-server": "^0.12.1",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
