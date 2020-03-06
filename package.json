@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "lint": "eslint .",
     "start": "npm run watch & npm run testserver",
     "test": "npm run build && start-server-and-test testserver http://localhost:8080 test-all",
     "test-all": "npm-run-all --continue-on-error test:*",
@@ -28,6 +29,8 @@
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "eslint-config-nhsuk": "^1.0.0",
     "http-server": "^0.12.1",
     "jest": "^25.1.0",
     "jest-environment-puppeteer": "^4.4.0",

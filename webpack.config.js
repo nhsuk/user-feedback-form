@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -28,5 +27,5 @@ module.exports = {
   output: {
     filename: 'user-feedback-form.js',
     path: path.resolve(__dirname, 'dist'),
-  }
+  },
 };

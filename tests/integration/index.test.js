@@ -1,4 +1,4 @@
-/* global page */
+/* global page expect */
 
 describe('Form is added to page', () => {
   beforeEach(async () => {

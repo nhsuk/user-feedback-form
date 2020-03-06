@@ -31,7 +31,7 @@ Run `npm start` to start a development server. A test site will be available at 
 
 ### Style
 
-TODO
+Run `npm run lint` to run eslint code linting.
 
 ### Tests
 
