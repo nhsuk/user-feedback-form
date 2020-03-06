@@ -35,4 +35,4 @@ TODO
 
 ### Tests
 
-TODO
+Run `npm test` to run all tests.
