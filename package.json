@@ -2,12 +2,13 @@
   "name": "user-feedback-form",
   "version": "0.0.1",
   "description": "A form for collecting user feedback",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "build": "webpack",
+    "build:production": "webpack --mode=production",
     "lint": "eslint .",
     "start": "npm run watch & npm run testserver",
     "test": "npm run build && start-server-and-test testserver http://localhost:8080 test-all",

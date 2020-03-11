@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = {
+const webConfig = {
   entry: ['@babel/polyfill', './src/index.js'],
   mode: 'development',
   module: {
@@ -29,3 +29,26 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
 };
+
+const nodeConfig = {
+  entry: ['./src/index.js'],
+  mode: 'development',
+  module: {
+    rules: [{
+      test: /\.(html)$/,
+      use: {
+        loader: 'html-loader',
+        options: {
+          attrs: false,
+          interpolate: true,
+        },
+      },
+    }],
+  },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
+
+module.exports = [webConfig, nodeConfig];
