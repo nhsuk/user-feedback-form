@@ -28,6 +28,7 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.8.0",
     "eslint-config-nhsuk": "^1.0.0",
+    "html-loader": "^0.5.5",
     "http-server": "^0.12.1",
     "jest": "^25.1.0",
     "jest-environment-puppeteer": "^4.4.0",
