@@ -4,7 +4,7 @@ beforeEach(async () => {
   await page.goto('http://localhost:8080/tests/example/');
 });
 
-describe.skip('Can answer no', () => {
+describe('Can answer no', () => {
   it('should display button on page', async () => {
     const noButton = await page.$('.nhsuk-user-feedback-form--no');
     expect(noButton).not.toBe(null);
