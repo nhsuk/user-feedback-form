@@ -23,6 +23,7 @@ describe('Can answer no', () => {
     page.on('request', (request) => {
       const data = JSON.parse(request.postData());
       expect(data.answer).toBe('no');
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/');
       done();
     });
     await noButton.click();

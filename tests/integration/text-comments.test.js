@@ -40,6 +40,7 @@ describe('Text comments', () => {
     page.once('request', (request) => {
       const data = JSON.parse(request.postData());
       expect(data).toEqual({ comment: 'Lorem ipsum' });
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/');
       done();
     });
     await submitButton.click();
