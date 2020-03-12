@@ -2,11 +2,11 @@ import updateHtml from '../html';
 import html from './template.html';
 
 export default class Confirmation {
-  constructor(container) {
-    this.container = container;
+  constructor(app) {
+    this.app = app;
   }
 
   render() {
-    updateHtml(this.container, html);
+    updateHtml(this.app.container, html);
   }
 }

@@ -16,7 +16,10 @@ Use script in your javascript build
 ```js
 import userFeedbackForm from '___';
 
-userFeedbackForm("#my-div-id");
+userFeedbackForm({
+    cssSelector: "#my-div-id",
+    formEndpoint: "https://example.com/my-api-endpoint/",
+});
 ```
 
 ### script
@@ -32,16 +35,23 @@ The latest javascript file can be found in github releases https://github.com/nh
 ...
 
 <!-- where you want the form to appear -->
-<div id="nhsuk-user-feedback-form"></div>
+<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint"></div>
 ```
+
+#### Attributes
+
+`data-form-endpoint` - (required) An HTTP endpoint to POST data to.
 
 ## API
 
-- `userFeedbackForm(cssSelector)`
+- `userFeedbackForm(settings)`
 
-Adds the user feedback form inside a `<div>` element. `cssSelector` will be used to select the div from the DOM.
+Adds the user feedback form inside a `<div>` element. `settings.cssSelector` will be used to select the div from the DOM.
 
-`cssSelector` is `'#nhsuk-user-feedback-form'` by default.
+`settings` should be an object containing:
+
+* `formEndpoint` - (required) An HTTP endpoint to POST data to.
+* `cssSelector` - (optional) HTML selector insert the form into. `'#nhsuk-user-feedback-form'` by default.
 
 ## Contributing
 
