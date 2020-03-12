@@ -33,3 +33,12 @@ export const postNo = () => {
     answer: 'no',
   });
 };
+
+/**
+ * send text comment to the server
+ */
+export const postComment = (comment) => {
+  postData({
+    comment,
+  });
+};

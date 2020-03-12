@@ -1,6 +1,6 @@
 import updateHtml from '../html';
 import html from './template.html';
-import TextComments from '../text-comments';
+import TextComments from '../text-comments'; // eslint-disable-line import/no-cycle
 import { postYes, postNo } from '../post';
 
 export default class InitialQuestion {
