@@ -1,7 +1,7 @@
 const path = require('path');
 
 const webConfig = {
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: ['@babel/polyfill', './src/browser-entrypoint.js'],
   mode: 'development',
   module: {
     rules: [{

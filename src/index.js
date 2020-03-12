@@ -1,6 +1,8 @@
 import InitialQuestion from './initial-question';
 
-const container = document.querySelector('#nhsuk-user-feedback-form');
+export default function (cssSelector = '#nhsuk-user-feedback-form') {
+  const container = document.querySelector(cssSelector);
 
-const initialQuestion = new InitialQuestion(container);
-initialQuestion.render();
+  const initialQuestion = new InitialQuestion(container);
+  initialQuestion.render();
+}
