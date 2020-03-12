@@ -1,24 +1,18 @@
 import updateHtml from '../html';
 import html from './template.html';
-import { postComment } from '../post';
-import InitialQuestion from '../initial-question'; // eslint-disable-line import/no-cycle
-import Confirmation from '../confirmation';
 
 export default class TextComments {
-  constructor(container) {
-    this.container = container;
+  constructor(app) {
+    this.app = app;
   }
 
   onClose(e) {
     e.preventDefault();
-    new InitialQuestion(this.container).render();
+    this.app.onTextClose();
   }
 
   onSubmit(value) {
-    if (value) {
-      postComment(value);
-    }
-    new Confirmation(this.container).render();
+    this.app.onTextSubmit(value);
   }
 
   addListeners(node) {
@@ -33,7 +27,7 @@ export default class TextComments {
   }
 
   render() {
-    const node = updateHtml(this.container, html);
+    const node = updateHtml(this.app.container, html);
     this.addListeners(node);
   }
 }

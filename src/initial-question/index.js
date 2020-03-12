@@ -1,26 +1,17 @@
 import updateHtml from '../html';
 import html from './template.html';
-import TextComments from '../text-comments'; // eslint-disable-line import/no-cycle
-import { postYes, postNo } from '../post';
 
 export default class InitialQuestion {
-  constructor(container) {
-    this.container = container;
-  }
-
-  goToNextQuestion() {
-    const textComments = new TextComments(this.container);
-    textComments.render();
+  constructor(app) {
+    this.app = app;
   }
 
   onYes() {
-    postYes();
-    this.goToNextQuestion();
+    this.app.onYes();
   }
 
   onNo() {
-    postNo();
-    this.goToNextQuestion();
+    this.app.onNo();
   }
 
   addListeners(node) {
@@ -32,7 +23,7 @@ export default class InitialQuestion {
   }
 
   render() {
-    const node = updateHtml(this.container, html);
+    const node = updateHtml(this.app.container, html);
     this.addListeners(node);
   }
 }
