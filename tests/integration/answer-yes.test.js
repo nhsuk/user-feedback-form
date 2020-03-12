@@ -23,6 +23,7 @@ describe('Can answer yes', () => {
     page.on('request', (request) => {
       const data = JSON.parse(request.postData());
       expect(data.answer).toBe('yes');
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/');
       done();
     });
     await yesButton.click();
