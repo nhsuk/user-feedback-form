@@ -1,9 +1,6 @@
-/**
- *
- */
-const userFeedbackForm = () => {
-  const container = document.querySelector('#nhsuk-user-feedback-form');
-  container.innerHTML = '<div class="nhsuk-user-feedback-form"><div>';
-};
+import InitialQuestion from './initial-question';
 
-userFeedbackForm();
+const container = document.querySelector('#nhsuk-user-feedback-form');
+
+const initialQuestion = new InitialQuestion(container);
+initialQuestion.render();
