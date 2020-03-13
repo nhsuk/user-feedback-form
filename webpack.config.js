@@ -47,6 +47,8 @@ const nodeConfig = {
   },
   output: {
     filename: 'index.js',
+    library: 'userFeedbackForm',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist'),
   },
 };
