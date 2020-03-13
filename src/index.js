@@ -27,14 +27,19 @@ class App {
     }
 
     this.postData = new PostData(this.settings.formEndpoint);
+
+    // The initial question's yes/no response. true=yes, false=no, null=unanswered.
+    this.initialQuestionResponse = null;
   }
 
   onYes() {
+    this.initialQuestionResponse = true;
     this.postData.postYes();
     new TextComments(this).render();
   }
 
   onNo() {
+    this.initialQuestionResponse = false;
     this.postData.postNo();
     new TextComments(this).render();
   }

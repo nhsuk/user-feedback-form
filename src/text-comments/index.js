@@ -1,9 +1,13 @@
 import updateHtml from '../html';
-import html from './template.html';
+import template from './template.html';
 
 export default class TextComments {
   constructor(app) {
     this.app = app;
+  }
+
+  getInitialQuestionResponse() {
+    return this.app.initialQuestionResponse;
   }
 
   onClose(e) {
@@ -27,6 +31,15 @@ export default class TextComments {
   }
 
   render() {
+    /**
+     * replace known template string with question label.
+     * If this gets any more complicated, we will have to use a proper templating library
+     */
+    const yesLabel = 'Is there anything we could do to make it better?';
+    const noLabel = 'What were you looking for?';
+    const label = this.getInitialQuestionResponse() ? yesLabel : noLabel;
+    const html = template.replace('{{ label }}', label);
+
     const node = updateHtml(this.app.container, html);
     this.addListeners(node);
   }
