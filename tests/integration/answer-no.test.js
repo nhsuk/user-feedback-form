@@ -13,9 +13,9 @@ describe('Can answer no', () => {
   it('should proceed to next question', async () => {
     const yesButton = await page.$('.nhsuk-user-feedback-form--no');
     await yesButton.click();
-    // textarea is on the next question
-    const textarea = await page.$('textarea');
-    expect(textarea).not.toBe(null);
+
+    const labelText = await page.$eval('label', (element) => element.innerText);
+    expect(labelText).toBe('What were you looking for?');
   });
 
   it('should register a negative vote', async (done) => {

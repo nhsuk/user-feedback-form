@@ -13,9 +13,9 @@ describe('Can answer yes', () => {
   it('should proceed to next question', async () => {
     const yesButton = await page.$('.nhsuk-user-feedback-form--yes');
     await yesButton.click();
-    // textarea is on the next question
-    const textarea = await page.$('textarea');
-    expect(textarea).not.toBe(null);
+
+    const labelText = await page.$eval('label', (element) => element.innerText);
+    expect(labelText).toBe('Is there anything we could do to make it better?');
   });
 
   it('should register a positive vote', async (done) => {
