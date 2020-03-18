@@ -1,4 +1,4 @@
-import InitialQuestion from './initial-question';
+import Satisfied from './satisfied';
 import TextComments from './text-comments';
 import Confirmation from './confirmation';
 
@@ -29,17 +29,17 @@ class App {
     this.postData = new PostData(this.settings.formEndpoint);
 
     // The initial question's yes/no response. true=yes, false=no, null=unanswered.
-    this.initialQuestionResponse = null;
+    this.isSatisfiedResponse = null;
   }
 
   onYes() {
-    this.initialQuestionResponse = true;
+    this.isSatisfiedResponse = true;
     this.postData.postYes();
     new TextComments(this).render();
   }
 
   onNo() {
-    this.initialQuestionResponse = false;
+    this.isSatisfiedResponse = false;
     this.postData.postNo();
     new TextComments(this).render();
   }
@@ -56,7 +56,7 @@ class App {
   }
 
   render() {
-    new InitialQuestion(this).render();
+    new Satisfied(this).render();
   }
 }
 

@@ -1,7 +1,7 @@
 import updateHtml from '../html';
 import html from './template.html';
 
-export default class InitialQuestion {
+export default class Satisfied {
   constructor(app) {
     this.app = app;
   }

@@ -7,7 +7,7 @@ export default class TextComments {
   }
 
   getInitialQuestionResponse() {
-    return this.app.initialQuestionResponse;
+    return this.app.isSatisfiedResponse;
   }
 
   onClose(e) {
