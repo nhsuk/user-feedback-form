@@ -39,8 +39,8 @@ describe('Text comments', () => {
     await textarea.type('Lorem ipsum');
     page.once('request', (request) => {
       const data = JSON.parse(request.postData());
-      expect(data).toEqual({ comment: 'Lorem ipsum' });
-      expect(request.url()).toBe('http://localhost:8080/my-endpoint/');
+      expect(data).toEqual({ comments: 'Lorem ipsum' });
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/comments');
       done();
     });
     await submitButton.click();
