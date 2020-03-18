@@ -22,8 +22,8 @@ describe('Can answer yes', () => {
     const yesButton = await page.$('.nhsuk-user-feedback-form--yes');
     page.on('request', (request) => {
       const data = JSON.parse(request.postData());
-      expect(data.answer).toBe('yes');
-      expect(request.url()).toBe('http://localhost:8080/my-endpoint/');
+      expect(data.isSatisfied).toBe(true);
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/satisfied');
       done();
     });
     await yesButton.click();

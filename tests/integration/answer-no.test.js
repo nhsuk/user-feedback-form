@@ -22,8 +22,8 @@ describe('Can answer no', () => {
     const noButton = await page.$('.nhsuk-user-feedback-form--no');
     page.on('request', (request) => {
       const data = JSON.parse(request.postData());
-      expect(data.answer).toBe('no');
-      expect(request.url()).toBe('http://localhost:8080/my-endpoint/');
+      expect(data.isSatisfied).toBe(false);
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/satisfied');
       done();
     });
     await noButton.click();

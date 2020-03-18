@@ -1,6 +1,8 @@
 # User Feedback Form
 
-A javascript plugin to add a user feedback form to your website
+A javascript plugin to add a user feedback form to your website.
+
+You will also need a backend data store. See [user-feedback-store](https://github.com/nhsuk/user-feedback-store).
 
 ## Quickstart
 
@@ -35,12 +37,12 @@ The latest javascript file can be found in github releases https://github.com/nh
 ...
 
 <!-- where you want the form to appear -->
-<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint"></div>
+<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint/"></div>
 ```
 
 #### Attributes
 
-`data-form-endpoint` - (required) An HTTP endpoint to POST data to.
+`data-form-endpoint` - (required) An HTTP data store endpoint to POST data to. Include the trailing slash
 
 ## API
 
@@ -50,7 +52,7 @@ Adds the user feedback form inside a `<div>` element. `settings.cssSelector` wil
 
 `settings` should be an object containing:
 
-* `formEndpoint` - (required) An HTTP endpoint to POST data to.
+* `formEndpoint` - (required) An HTTP data store endpoint to POST data to.
 * `cssSelector` - (optional) HTML selector insert the form into. `'#nhsuk-user-feedback-form'` by default.
 
 ## Contributing
