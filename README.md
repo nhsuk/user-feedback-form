@@ -8,15 +8,15 @@ You will also need a backend data store. See [user-feedback-store](https://githu
 
 ### npm
 
-Install from npm (TODO: release package to npm)
+Install from npm
 ```bash
-npm install ___
+npm install @nhsuk/user-feedback-form
 ```
 
 Use script in your javascript build
 
 ```js
-import userFeedbackForm from '___';
+import userFeedbackForm from '@nhsuk/user-feedback-form';
 
 userFeedbackForm({
     cssSelector: "#my-div-id",
@@ -28,7 +28,7 @@ userFeedbackForm({
 
 If you do not have a node-based javascript frontend build, you can use the minified javascript distribution.
 
-The latest javascript file can be found in github releases https://github.com/nhsuk/user-feedback-form/releases (TODO: release to github)
+The latest javascript file can be found in github releases https://github.com/nhsuk/user-feedback-form/releases
 
 ```html
 <!-- in the html <head> -->
