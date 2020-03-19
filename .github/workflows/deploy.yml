@@ -35,3 +35,9 @@ jobs:
           asset_path: ./dist/user-feedback-form.js
           asset_name: user-feedback-form.min.js
           asset_content_type: text/javascript
+      - name: Publish npm package
+        run: npm publish
+        with:
+          registry-url: https://registry.npmjs.org/
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
