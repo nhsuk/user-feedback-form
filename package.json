@@ -1,5 +1,5 @@
 {
-  "name": "user-feedback-form",
+  "name": "@nhsuk/user-feedback-form",
   "version": "0.0.1",
   "description": "A form for collecting user feedback",
   "main": "dist/index.js",
@@ -18,7 +18,10 @@
     "watch": "webpack --watch"
   },
   "author": "mike@mikemonteith.com",
-  "license": "ISC",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "nhsuk-frontend": "^3.0.3"
   },
