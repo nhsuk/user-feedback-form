@@ -5,6 +5,8 @@ export default class PostData {
   constructor(endpoint) {
     this.endpoint = endpoint;
 
+    this.currentUrl = document.location.href;
+
     /**
      * The API endpoint will return a token which we must store and re-send with each
      * subsequent request
@@ -17,6 +19,13 @@ export default class PostData {
    */
   getEndpoint() {
     return this.endpoint;
+  }
+
+  /**
+   * Get the current URL that the user is giving feedback on
+   */
+  getUrl() {
+    return this.currentUrl;
   }
 
   /**
@@ -61,6 +70,7 @@ export default class PostData {
   postYes() {
     this.post('satisfied', {
       isSatisfied: true,
+      url: this.getUrl(),
     });
   }
 
@@ -70,6 +80,7 @@ export default class PostData {
   postNo() {
     this.post('satisfied', {
       isSatisfied: false,
+      url: this.getUrl(),
     });
   }
 
