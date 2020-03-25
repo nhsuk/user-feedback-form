@@ -1,10 +1,16 @@
 /**
+ * @module screen
+ */
+
+/**
  * Extend this class to create a new Screen in the app user flow.
  * Must implement a `render()` method which is responsible for rending the screen's HTML
- *
- * @param app - The app object. An instance of the `App` class.
  */
 export default class Screen {
+  /**
+   * @constructor
+   * @param {App} app - The app object.
+   */
   constructor(app) {
     if (this.constructor === Screen) {
       throw new TypeError('Abstract class `Screen` cannot be instantiated directly.');

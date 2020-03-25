@@ -1,3 +1,10 @@
+/**
+ * @module post-data
+ */
+
+/**
+* A class for posting data to the user-feedback storage endpoint
+*/
 export default class PostData {
   /**
    * @param {string} endpoint - API endpoint to post data to

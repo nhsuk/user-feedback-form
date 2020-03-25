@@ -12,7 +12,13 @@ const getSettingsFromContainer = (container) => ({
   formEndpoint: container.getAttribute('data-form-endpoint'),
 });
 
+/**
+ * Class representing the entire app
+ */
 class App {
+  /**
+   * @param {Object} settings - settings to use when instantiating the app
+   */
   constructor(settings) {
     this.container = document.querySelector(settings.cssSelector);
 
@@ -61,7 +67,6 @@ class App {
 }
 
 /**
- *
  * @param {Object} settings
  * @param {string} settings.formEndpoint - API endpoint to post data to
  * @param {string} settings.cssSelector - CSS selector to get the container div
