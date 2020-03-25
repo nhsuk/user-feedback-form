@@ -63,6 +63,11 @@ Run `npm install` followed by `npm start` to start a development server. A test 
 
 ### Style
 
+For now, this app is very simple, so we don't use any libraries like Vue or React.
+The `App` class in `src/index.js` represents the app as a whole.
+Each screen has it's own class which can be instantiated and rendered with the `render` method when the screen should be displayed.
+The screen classes are responsible for screen-level interactions such as rendering, attaching event listeners and input validation.
+
 Run `npm run lint` to run eslint code linting.
 
 ### Tests

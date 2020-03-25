@@ -1,12 +1,8 @@
-import updateHtml from '../html';
+import Screen from '../screen';
 import html from './template.html';
 
-export default class Confirmation {
-  constructor(app) {
-    this.app = app;
-  }
-
+export default class ConfirmationScreen extends Screen {
   render() {
-    updateHtml(this.app.container, html);
+    this.updateHtml(html);
   }
 }

@@ -1,6 +1,6 @@
-import Satisfied from './satisfied';
-import TextComments from './text-comments';
-import Confirmation from './confirmation';
+import SatisfiedScreen from './satisfied';
+import TextCommentsScreen from './text-comments';
+import ConfirmationScreen from './confirmation';
 
 import PostData from './post-data';
 
@@ -35,20 +35,20 @@ class App {
   onYes() {
     this.isSatisfiedResponse = true;
     this.postData.postYes();
-    new TextComments(this).render();
+    new TextCommentsScreen(this).render();
   }
 
   onNo() {
     this.isSatisfiedResponse = false;
     this.postData.postNo();
-    new TextComments(this).render();
+    new TextCommentsScreen(this).render();
   }
 
   onTextSubmit(value) {
     if (value) {
       this.postData.postComment(value);
     }
-    new Confirmation(this).render();
+    new ConfirmationScreen(this).render();
   }
 
   onTextClose() {
@@ -56,7 +56,7 @@ class App {
   }
 
   render() {
-    new Satisfied(this).render();
+    new SatisfiedScreen(this).render();
   }
 }
 
