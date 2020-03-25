@@ -59,7 +59,7 @@ Adds the user feedback form inside a `<div>` element. `settings.cssSelector` wil
 
 ### Development
 
-Run `npm start` to start a development server. A test site will be available at http://localhost:8080/tests/example/
+Run `npm install` followed by `npm start` to start a development server. A test site will be available at http://localhost:8080/tests/example/
 
 ### Style
 
