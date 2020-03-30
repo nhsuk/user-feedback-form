@@ -5,7 +5,7 @@ export default class PostData {
   constructor(endpoint) {
     this.endpoint = endpoint;
 
-    this.currentUrl = document.location.href;
+    this.currentUrl = window.location.href;
 
     /**
      * The API endpoint will return a token which we must store and re-send with each
