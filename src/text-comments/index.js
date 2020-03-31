@@ -1,11 +1,7 @@
-import updateHtml from '../html';
+import Screen from '../screen';
 import template from './template.html';
 
-export default class TextComments {
-  constructor(app) {
-    this.app = app;
-  }
-
+export default class TextCommentsScreen extends Screen {
   getInitialQuestionResponse() {
     return this.app.isSatisfiedResponse;
   }
@@ -40,7 +36,7 @@ export default class TextComments {
     const label = this.getInitialQuestionResponse() ? yesLabel : noLabel;
     const html = template.replace('{{ label }}', label);
 
-    const node = updateHtml(this.app.container, html);
+    const node = this.updateHtml(html);
     this.addListeners(node);
   }
 }

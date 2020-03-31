@@ -1,11 +1,7 @@
-import updateHtml from '../html';
+import Screen from '../screen';
 import html from './template.html';
 
-export default class Satisfied {
-  constructor(app) {
-    this.app = app;
-  }
-
+export default class SatisfiedScreen extends Screen {
   onYes() {
     this.app.onYes();
   }
@@ -23,7 +19,7 @@ export default class Satisfied {
   }
 
   render() {
-    const node = updateHtml(this.app.container, html);
+    const node = this.updateHtml(html);
     this.addListeners(node);
   }
 }
