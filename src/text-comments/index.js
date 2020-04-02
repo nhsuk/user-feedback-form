@@ -12,7 +12,9 @@ export default class TextCommentsScreen extends Screen {
   }
 
   onSubmit(value) {
-    this.app.onTextSubmit(value);
+    // Trim input to 1000 characters to avoid validation errors
+    const cleanValue = value.substr(0, 1000);
+    this.app.onTextSubmit(cleanValue);
   }
 
   addListeners(node) {
