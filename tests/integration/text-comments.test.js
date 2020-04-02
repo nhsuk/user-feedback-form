@@ -29,8 +29,19 @@ describe('Text comments', () => {
     expect(helpText).not.toBe(null);
   });
 
-  it.skip('should have max character limit', () => {
-    test.todo('max char limit');
+  it('should trim input at max character limit', async (done) => {
+    const textarea = await page.$('textarea');
+    const submitButton = await page.$('.nhsuk-user-feedback-form--submit');
+    // Type a 1001-char long comment
+    await textarea.type('A'.repeat(1001));
+    page.once('request', (request) => {
+      const data = JSON.parse(request.postData());
+      // comment that actually gets posted should be trimmed to 1000 chars
+      expect(data).toEqual({ comments: 'A'.repeat(1000) });
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/comments');
+      done();
+    });
+    await submitButton.click();
   });
 
   it('submission should register comments', async (done) => {
