@@ -31,7 +31,7 @@ export default class TextCommentsScreen extends Screen {
      * replace known template string with question label.
      * If this gets any more complicated, we will have to use a proper templating library
      */
-    const yesLabel = 'Tell us what we could do to improve the website';
+    const yesLabel = 'What happened to make you visit the NHS website today?';
     const noLabel = 'What were you looking for?';
     const label = this.getInitialQuestionResponse() ? yesLabel : noLabel;
     const html = template.replace('{{ label }}', label);

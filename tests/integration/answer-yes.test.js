@@ -15,7 +15,7 @@ describe('Can answer yes', () => {
     await yesButton.click();
 
     const labelText = await page.$eval('label', (element) => element.innerText);
-    expect(labelText).toBe('Tell us what we could do to improve the website (optional)');
+    expect(labelText).toBe('What happened to make you visit the NHS website today? (optional)');
   });
 
   it('should register a positive vote', async (done) => {
