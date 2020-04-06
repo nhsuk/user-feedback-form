@@ -3,6 +3,8 @@ import html from './template.html';
 
 export default class ConfirmationScreen extends Screen {
   render() {
-    this.updateHtml(html);
+    const node = this.updateHtml(html);
+    const thankYouMessage = node.querySelector('#thank-you-message');
+    thankYouMessage.focus();
   }
 }
