@@ -26,9 +26,6 @@ export default class TextCommentsScreen extends Screen {
       const textarea = node.querySelector('textarea');
       this.onSubmit(textarea.value);
     });
-
-    const thankYouMessage = node.querySelector('#thank-you-message');
-    thankYouMessage.focus();
   }
 
   render() {
