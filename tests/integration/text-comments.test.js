@@ -11,19 +11,6 @@ describe('Text comments', () => {
     expect(textarea).not.toBe(null);
   });
 
-  it('should have close button', async () => {
-    const closeButton = await page.$('.nhsuk-user-feedback-form--close');
-    expect(closeButton).not.toBe(null);
-  });
-
-  it('close button should go to first question', async () => {
-    const closeButton = await page.$('.nhsuk-user-feedback-form--close');
-    await closeButton.click();
-
-    const yesButton = await page.$('.nhsuk-user-feedback-form--yes');
-    expect(yesButton).not.toBe(null);
-  });
-
   it('should have help text', async () => {
     const helpText = await page.$('.nhsuk-hint');
     expect(helpText).not.toBe(null);

@@ -6,11 +6,6 @@ export default class TextCommentsScreen extends Screen {
     return this.app.isSatisfiedResponse;
   }
 
-  onClose(e) {
-    e.preventDefault();
-    this.app.onTextClose();
-  }
-
   onSubmit(value) {
     // Trim input to 1000 characters to avoid validation errors
     const cleanValue = value.substr(0, 1000);
@@ -18,9 +13,6 @@ export default class TextCommentsScreen extends Screen {
   }
 
   addListeners(node) {
-    const closeButton = node.querySelector('.nhsuk-user-feedback-form--close');
-    closeButton.addEventListener('click', this.onClose.bind(this));
-
     const submitButton = node.querySelector('.nhsuk-user-feedback-form--submit');
     submitButton.addEventListener('click', () => {
       const textarea = node.querySelector('textarea');

@@ -51,10 +51,6 @@ class App {
     new ConfirmationScreen(this).render();
   }
 
-  onTextClose() {
-    this.render();
-  }
-
   render() {
     new SatisfiedScreen(this).render();
   }
