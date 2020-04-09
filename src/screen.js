@@ -1,4 +1,22 @@
 /**
+ * IE polyfill for Element.remove(). Used at [1]
+ */
+if (!('remove' in Element.prototype)) {
+  Element.prototype.remove = function removePolyfill() {
+    if (this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
+}
+
+/**
+ * IE polyfill for NodeList.forEach(). Used at [2]
+ */
+if (!('forEach' in NodeList.prototype)) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
+/**
  * Extend this class to create a new Screen in the app user flow.
  * Must implement a `render()` method which is responsible for rending the screen's HTML
  *
@@ -28,8 +46,8 @@ export default class Screen {
    */
   updateHtml(html) {
     // Remove all container children before adding new html
-    this.app.container.childNodes.forEach((child) => {
-      child.remove();
+    this.app.container.childNodes.forEach((child) => { /* [2] */
+      child.remove(); /* [1] */
     });
 
     // Create a new element to insert into the container
