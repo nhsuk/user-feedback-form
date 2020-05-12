@@ -36,12 +36,18 @@ class App {
     this.isSatisfiedResponse = true;
     this.postData.postYes();
     new TextCommentsScreen(this).render();
+
+    // Triggers hotjar recording
+    hj('trigger', 'feedback_response');
   }
 
   onNo() {
     this.isSatisfiedResponse = false;
     this.postData.postNo();
     new TextCommentsScreen(this).render();
+
+    // Triggers hotjar recording
+    hj('trigger', 'feedback_response');
   }
 
   onTextSubmit(value) {
