@@ -45,9 +45,7 @@ class App {
   }
 
   onTextSubmit(value) {
-    if (value) {
-      this.postData.postComment(value);
-    }
+    this.postData.postComment(value);
     new ConfirmationScreen(this).render();
   }
 
