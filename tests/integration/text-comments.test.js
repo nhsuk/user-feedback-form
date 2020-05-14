@@ -1,4 +1,4 @@
-/* global page expect jest */
+/* global page expect */
 
 beforeEach(async () => {
   await page.goto('http://localhost:8080/tests/example/');
@@ -45,7 +45,6 @@ describe('Text comments', () => {
   });
 
   it('blank submission should register comments', async (done) => {
-    const textarea = await page.$('textarea');
     const submitButton = await page.$('.nhsuk-user-feedback-form--submit');
     page.once('request', (request) => {
       const data = JSON.parse(request.postData());
