@@ -44,13 +44,16 @@ describe('Text comments', () => {
     await submitButton.click();
   });
 
-  it('blank submission should not register comments', async () => {
+  it('blank submission should register comments', async (done) => {
+    const textarea = await page.$('textarea');
     const submitButton = await page.$('.nhsuk-user-feedback-form--submit');
-    const requestCallback = jest.fn();
-    page.once('request', requestCallback);
+    page.once('request', (request) => {
+      const data = JSON.parse(request.postData());
+      expect(data).toEqual({ comments: '' });
+      expect(request.url()).toBe('http://localhost:8080/my-endpoint/comments');
+      done();
+    });
     await submitButton.click();
-    await page.waitFor(500); // wait 500ms to see if a request is sent
-    expect(requestCallback).not.toBeCalled();
   });
 
   it('submission should show confirmation text', async () => {
