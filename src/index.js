@@ -36,12 +36,18 @@ class App {
     this.isSatisfiedResponse = true;
     this.postData.postYes();
     new TextCommentsScreen(this).render();
+
+    const event = new Event('onFeedback', { isSatisfied: true });
+    this.container.dispatchEvent(event);
   }
 
   onNo() {
     this.isSatisfiedResponse = false;
     this.postData.postNo();
     new TextCommentsScreen(this).render();
+
+    const event = new Event('onFeedback', { isSatisfied: false });
+    this.container.dispatchEvent(event);
   }
 
   onTextSubmit(value) {
