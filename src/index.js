@@ -2,6 +2,8 @@ import SatisfiedScreen from './satisfied';
 import TextCommentsScreen from './text-comments';
 import ConfirmationScreen from './confirmation';
 
+import * as events from './events';
+
 import PostData from './post-data';
 
 /**
@@ -37,8 +39,7 @@ class App {
     this.postData.postYes();
     new TextCommentsScreen(this).render();
 
-    const event = new Event('onFeedback', { isSatisfied: true });
-    this.container.dispatchEvent(event);
+    events.OnFeedbackEvent(true, this.container);
   }
 
   onNo() {
@@ -46,8 +47,7 @@ class App {
     this.postData.postNo();
     new TextCommentsScreen(this).render();
 
-    const event = new Event('onFeedback', { isSatisfied: false });
-    this.container.dispatchEvent(event);
+    events.OnFeedbackEvent(false, this.container);
   }
 
   onTextSubmit(value) {
