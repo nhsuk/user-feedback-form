@@ -5,7 +5,7 @@
  * @param {HTMLElement} container DOM node to define event target
  * @param {boolean} satisfied Bool to send user satisfaction
  */
-export default function OnFeedbackEvent(container, satisfied) {
-  const event = new Event('onFeedback', { isSatisfied: satisfied });
+export default function onFeedbackEvent(container, satisfied) {
+  const event = new CustomEvent('onFeedback', { detail: { isSatisfied: satisfied } });
   container.dispatchEvent(event);
 }

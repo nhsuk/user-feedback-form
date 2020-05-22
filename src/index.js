@@ -2,7 +2,7 @@ import SatisfiedScreen from './satisfied';
 import TextCommentsScreen from './text-comments';
 import ConfirmationScreen from './confirmation';
 
-import OnFeedbackEvent from './events';
+import onFeedbackEvent from './events';
 
 import PostData from './post-data';
 
@@ -39,7 +39,7 @@ class App {
     this.postData.postYes();
     new TextCommentsScreen(this).render();
 
-    OnFeedbackEvent(this.container, true);
+    onFeedbackEvent(this.container, true);
   }
 
   onNo() {
@@ -47,7 +47,7 @@ class App {
     this.postData.postNo();
     new TextCommentsScreen(this).render();
 
-    OnFeedbackEvent(this.container, false);
+    onFeedbackEvent(this.container, false);
   }
 
   onTextSubmit(value) {
