@@ -4,66 +4,62 @@ beforeEach(async () => {
   await page.goto('http://localhost:8080/tests/example/');
 });
 
+/* eslint-disable arrow-body-style */
+const listenToEvent = () => {
+  return page.$eval('#nhsuk-user-feedback-form', (element) => {
+    return new Promise((resolve) => {
+      const listener = (event) => {
+        // We only want this listener to fire once, so make sure we remove it
+        element.removeEventListener('onFeedback', listener);
+        resolve(event.detail.isSatisfied);
+      };
+      element.addEventListener('onFeedback', listener);
+    });
+  });
+};
+/* eslint-enable arrow-body-style */
+
 describe('should trigger event listeners', () => {
   it('should dispatch event on yes', async (done) => {
-    await page.exposeFunction('handlePositiveFeedbackEvent', () => {
+    listenToEvent().then(() => {
       done();
-    });
-
-    await page.$eval('#nhsuk-user-feedback-form', (el) => {
-      el.addEventListener('onFeedback', () => {
-        window.handlePositiveFeedbackEvent();
-      });
+    }).catch((err) => {
+      done(err);
     });
     const yesButton = await page.$('.nhsuk-user-feedback-form--yes');
     await yesButton.click();
   });
 
   it('should dispatch event on no', async (done) => {
-    await page.exposeFunction('handleNegativeFeedbackEvent', () => {
+    listenToEvent().then(() => {
       done();
-    });
-
-    await page.$eval('#nhsuk-user-feedback-form', (el) => {
-      el.addEventListener('onFeedback', () => {
-        window.handleNegativeFeedbackEvent();
-      });
+    }).catch((err) => {
+      done(err);
     });
     const noButton = await page.$('.nhsuk-user-feedback-form--no');
     await noButton.click();
   });
 
   it('should send satisfied response on yes', async (done) => {
-    await page.exposeFunction('handlePositiveFeedbackResponse', (isSatisfied) => {
-      process.nextTick(() => {
-        expect(isSatisfied).toBe(true);
-        done();
-      });
-    });
-
-    await page.$eval('#nhsuk-user-feedback-form', (el) => {
-      el.addEventListener('onFeedback', (event) => {
-        window.handlePositiveFeedbackResponse(event.detail.isSatisfied);
-      });
+    listenToEvent().then((isSatisfied) => {
+      expect(isSatisfied).toBe(true);
+      done();
+    }).catch((err) => {
+      done(err);
     });
     const yesButton = await page.$('.nhsuk-user-feedback-form--yes');
     await yesButton.click();
   });
 
   it('should send satisfied response on no', async (done) => {
-    await page.exposeFunction('handleNegativeFeedbackResponse', (isSatisfied) => {
-      process.nextTick(() => {
-        expect(isSatisfied).toBe(false);
-        done();
-      });
+    listenToEvent().then((isSatisfied) => {
+      expect(isSatisfied).toBe(false);
+      done();
+    }).catch((err) => {
+      done(err);
     });
 
-    await page.$eval('#nhsuk-user-feedback-form', (el) => {
-      el.addEventListener('onFeedback', (event) => {
-        window.handleNegativeFeedbackResponse(event.detail.isSatisfied);
-      });
-    });
-    const yesButton = await page.$('.nhsuk-user-feedback-form--no');
-    await yesButton.click();
+    const noButton = await page.$('.nhsuk-user-feedback-form--no');
+    await noButton.click();
   });
 });
