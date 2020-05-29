@@ -55,21 +55,18 @@ Adds the user feedback form inside a `<div>` element. `settings.cssSelector` wil
 * `formEndpoint` - (required) An HTTP data store endpoint to POST data to.
 * `cssSelector` - (optional) HTML selector insert the form into. `'#nhsuk-user-feedback-form'` by default.
 
-### events
+### Events
 
-[Custom events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events) can be added to trigger additional functionality upon user interaction with the app.
+An `onFeedback` event is emitted when the user gives satisfied or unsatisfied feedback by clicking on the yes or no buttons.
 
-You will need to implement listeners for these events within your website.
+You can listen to this event to trigger custom javascript code.
 
-```
-// Event dispatcher within this app
-const event = new CustomEvent('eventName', { detail: { data } });
-element.dispatchEvent(event);
-```
-
-```
-// Listen for the event on your site
-element.addEventListener('eventName', () => {...});
+```js
+// Listen to the event on the container div
+document.querySelector("#nhsuk-user-feedback-form").addEventListener('onFeedback', (event) => {
+  // custom code using the boolean `isSatisfied` value.
+  console.log(event.detail.isSatisfied)
+});
 ```
 
 ## Contributing
