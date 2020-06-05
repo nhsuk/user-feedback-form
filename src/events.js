@@ -1,4 +1,21 @@
 /**
+ * IE polyfill for CustomEvents
+ */
+// eslint-disable-next-line consistent-return
+(function customEventPolyFill() {
+  if (typeof window.CustomEvent === 'function') return false;
+
+  function CustomEvent(event, params) {
+    // eslint-disable-next-line no-param-reassign
+    params = params || { bubbles: false, cancelable: false, detail: null };
+    const evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+    return evt;
+  }
+  window.CustomEvent = CustomEvent;
+}());
+
+/**
  * Dispatches event named onFeedback
  * Implement an addEventListener at the event target to utilise
  *
