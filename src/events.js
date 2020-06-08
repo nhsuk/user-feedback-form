@@ -1,9 +1,9 @@
 /**
- * IE polyfill for CustomEvents
+ * IE polyfill to create CustomEvent objects
+ * Taken from https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent
  */
-// eslint-disable-next-line consistent-return
 (function customEventPolyFill() {
-  if (typeof window.CustomEvent === 'function') return false;
+  if (typeof window.CustomEvent === 'function') return;
 
   function CustomEvent(event, params) {
     // eslint-disable-next-line no-param-reassign
