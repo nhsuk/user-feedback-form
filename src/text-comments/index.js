@@ -29,7 +29,7 @@ export default class TextCommentsScreen extends Screen {
     const noLabel = 'What were you looking for?';
     const label = this.getInitialQuestionResponse() ? yesLabel : noLabel;
     const html = template.replace('{{ label }}', label);
-  
+
     const node = this.updateHtml(html);
     const moreDetail = node.querySelector('#more-detail');
     moreDetail.focus();
