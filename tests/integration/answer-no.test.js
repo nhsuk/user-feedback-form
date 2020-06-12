@@ -15,7 +15,7 @@ describe('Can answer no', () => {
     await yesButton.click();
 
     const labelText = await page.$eval('label', (element) => element.innerText);
-    expect(labelText).toBe('What were you looking for? (optional)');
+    expect(labelText).toBe('What were you looking for? (optional)\nDo not include personal information.');
   });
 
   it('should register a negative vote', async (done) => {
