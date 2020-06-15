@@ -31,6 +31,9 @@ export default class TextCommentsScreen extends Screen {
     const html = template.replace('{{ label }}', label);
 
     const node = this.updateHtml(html);
+    const moreDetail = node.querySelector('#more-detail');
+    moreDetail.focus();
+
     this.addListeners(node);
   }
 }
