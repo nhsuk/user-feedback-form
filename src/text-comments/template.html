@@ -1,14 +1,14 @@
-<div class="nhsuk-panel nhsuk-u-reading-width">
-  <span class="nhsuk-heading-s" aria-live="assertive">Thank you, your feedback has been recorded</span>
+<div class="nhsuk-panel nhsuk-u-reading-width" aria-live="assertive">
+  <span class="nhsuk-heading-s">Thank you, your feedback has been recorded</span>
   <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
   <div class="nhsuk-form-group">
     <label class="nhsuk-label" for="more-detail">
       {{ label }} (optional)
+      <span class="nhsuk-hint nhsuk-u-margin-bottom-4" id="more-detail-hint">
+        Do not include personal information.
+      </span>
     </label>
-    <span class="nhsuk-hint nhsuk-u-margin-bottom-4" id="more-detail-hint">
-      Do not include personal information.
-    </span>
-    <textarea class="nhsuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+    <textarea class="nhsuk-textarea" id="more-detail" name="more-detail" rows="5"></textarea>
   </div>
   <button class="nhsuk-button nhsuk-button--secondary nhsuk-user-feedback-form--submit" type="submit">
     Submit
