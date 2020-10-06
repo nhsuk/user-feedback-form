@@ -8,7 +8,7 @@ beforeEach(async () => {
 
 describe('Confirmation text', () => {
   it('should have title', async () => {
-    const title = await page.$('span');
+    const title = await page.$('h2');
     expect(title).not.toBe(null);
 
     const text = await page.evaluate((element) => element.innerText, title);
