@@ -1,5 +1,26 @@
 const path = require('path');
 
+const htmlLoaderRule = {
+  test: /\.html$/i,
+  use: {
+    loader: 'html-loader',
+    options: {
+      attrs: false,
+      interpolate: true,
+    },
+  },
+};
+
+const cssLoaderRule = {
+  test: /\.css$/i,
+  use: ['style-loader', 'css-loader'],
+};
+
+/**
+ * We need two different configs for two js builds.
+ * webConfig for creating a compiled JS file that can be included directly with a <script> tag.
+ * nodeConfig for compiling a JS module to be distributed via npm.
+ */
 const webConfig = {
   entry: ['@babel/polyfill', './src/browser-entrypoint.js'],
   mode: 'development',
@@ -13,16 +34,7 @@ const webConfig = {
           presets: ['@babel/preset-env'],
         },
       },
-    }, {
-      test: /\.(html)$/,
-      use: {
-        loader: 'html-loader',
-        options: {
-          attrs: false,
-          interpolate: true,
-        },
-      },
-    }],
+    }, htmlLoaderRule, cssLoaderRule],
   },
   output: {
     filename: 'user-feedback-form.js',
@@ -34,16 +46,7 @@ const nodeConfig = {
   entry: ['./src/index.js'],
   mode: 'development',
   module: {
-    rules: [{
-      test: /\.(html)$/,
-      use: {
-        loader: 'html-loader',
-        options: {
-          attrs: false,
-          interpolate: true,
-        },
-      },
-    }],
+    rules: [htmlLoaderRule, cssLoaderRule],
   },
   output: {
     filename: 'index.js',
