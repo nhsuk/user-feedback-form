@@ -6,6 +6,8 @@ import onFeedbackEvent from './events';
 
 import PostData from './post-data';
 
+import './nhsuk-feedback-form.css';
+
 /**
  * Get settings from data attributes on the container div
  * @returns {Object} settings
