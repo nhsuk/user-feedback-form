@@ -8,11 +8,19 @@ import PostData from './post-data';
 
 import './nhsuk-feedback-form.css';
 
+function getDisableTextResponse(container) {
+  if (container.getAttribute('data-disable-text-response') === 'true') {
+    return true;
+  }
+  return false;
+}
+
 /**
  * Get settings from data attributes on the container div
  * @returns {Object} settings
  */
 const getSettingsFromContainer = (container) => ({
+  disableTextResponse: getDisableTextResponse(container),
   formEndpoint: container.getAttribute('data-form-endpoint'),
 });
 
@@ -34,12 +42,19 @@ class App {
 
     // The initial question's yes/no response. true=yes, false=no, null=unanswered.
     this.isSatisfiedResponse = null;
+
+    this.disableTextResponse = this.settings.disableTextResponse;
   }
 
   onYes() {
     this.isSatisfiedResponse = true;
     this.postData.postYes();
-    new TextCommentsScreen(this).render();
+
+    if (this.disableTextResponse === true) {
+      new ConfirmationScreen(this).render();
+    } else {
+      new TextCommentsScreen(this).render();
+    }
 
     onFeedbackEvent(this.container, true);
   }
@@ -47,7 +62,12 @@ class App {
   onNo() {
     this.isSatisfiedResponse = false;
     this.postData.postNo();
-    new TextCommentsScreen(this).render();
+
+    if (this.disableTextResponse === true) {
+      new ConfirmationScreen(this).render();
+    } else {
+      new TextCommentsScreen(this).render();
+    }
 
     onFeedbackEvent(this.container, false);
   }
@@ -67,6 +87,7 @@ class App {
  * @param {Object} settings
  * @param {string} settings.formEndpoint - API endpoint to post data to
  * @param {string} settings.cssSelector - CSS selector to get the container div
+ * @param {boolean} settings.disableTextResponse - Disables text responses from the form
  */
 export default function (settings = {}) {
   const settingsWithDefaults = {

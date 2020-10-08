@@ -21,6 +21,7 @@ import userFeedbackForm from '@nhsuk/user-feedback-form';
 userFeedbackForm({
     cssSelector: "#my-div-id",
     formEndpoint: "https://example.com/my-api-endpoint/",
+    disableTextResponse: false,
 });
 ```
 
@@ -37,12 +38,14 @@ The latest javascript file can be found in github releases https://github.com/nh
 ...
 
 <!-- where you want the form to appear -->
-<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint/"></div>
+<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint/" data-disable-text-response="false"></div>
 ```
 
 #### Attributes
 
 `data-form-endpoint` - (required) An HTTP data store endpoint to POST data to. Include the trailing slash
+`data-disable-text-response` - (optional) If "true", text responses will be disabled. If "false" or left out,
+text responses will remain
 
 ## API
 
