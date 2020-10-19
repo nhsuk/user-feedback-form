@@ -8,8 +8,8 @@ import PostData from './post-data';
 
 import './nhsuk-feedback-form.css';
 
-function getDisableTextResponse(container) {
-  if (container.getAttribute('data-disable-text-response') === 'true') {
+function getEnableTextResponse(container) {
+  if (container.getAttribute('data-enable-text-response') === 'true') {
     return true;
   }
   return false;
@@ -20,7 +20,7 @@ function getDisableTextResponse(container) {
  * @returns {Object} settings
  */
 const getSettingsFromContainer = (container) => ({
-  disableTextResponse: getDisableTextResponse(container),
+  enableTextResponse: getEnableTextResponse(container),
   formEndpoint: container.getAttribute('data-form-endpoint'),
 });
 
@@ -43,14 +43,14 @@ class App {
     // The initial question's yes/no response. true=yes, false=no, null=unanswered.
     this.isSatisfiedResponse = null;
 
-    this.disableTextResponse = this.settings.disableTextResponse;
+    this.enableTextResponse = this.settings.enableTextResponse;
   }
 
   onYes() {
     this.isSatisfiedResponse = true;
     this.postData.postYes();
 
-    if (this.disableTextResponse === true) {
+    if (this.enableTextResponse === false) {
       new ConfirmationScreen(this).render();
     } else {
       new TextCommentsScreen(this).render();
@@ -63,7 +63,7 @@ class App {
     this.isSatisfiedResponse = false;
     this.postData.postNo();
 
-    if (this.disableTextResponse === true) {
+    if (this.enableTextResponse === false) {
       new ConfirmationScreen(this).render();
     } else {
       new TextCommentsScreen(this).render();
@@ -87,7 +87,7 @@ class App {
  * @param {Object} settings
  * @param {string} settings.formEndpoint - API endpoint to post data to
  * @param {string} settings.cssSelector - CSS selector to get the container div
- * @param {boolean} settings.disableTextResponse - Disables text responses from the form
+ * @param {boolean} settings.enableTextResponse - Disables text responses from the form
  */
 export default function (settings = {}) {
   const settingsWithDefaults = {

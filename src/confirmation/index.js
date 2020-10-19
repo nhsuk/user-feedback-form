@@ -2,8 +2,8 @@ import Screen from '../screen';
 import html from './template.html';
 
 export default class ConfirmationScreen extends Screen {
-  getDisableTextResponse() {
-    return this.app.disableTextResponse;
+  getEnableTextResponse() {
+    return this.app.enableTextResponse;
   }
 
   render() {
@@ -12,8 +12,8 @@ export default class ConfirmationScreen extends Screen {
 
     let label;
 
-    /* If data-disable-text-response attribute is "true" show a blank label */
-    if (this.getDisableTextResponse() === true) {
+    /* If data-enable-text-response attribute is "false" show a blank label */
+    if (this.getEnableTextResponse() === false) {
       label = blankLabel;
     } else {
       label = textResponseLabel;
