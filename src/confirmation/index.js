@@ -7,19 +7,16 @@ export default class ConfirmationScreen extends Screen {
   }
 
   render() {
-    const textResponseLabel = '<p>We do not check feedback every day and cannot respond to comments.</p>';
-    const blankLabel = '';
-
-    let label;
+    let message;
 
     /* If data-enable-text-response attribute is "false" show a blank label */
     if (this.getEnableTextResponse() === false) {
-      label = blankLabel;
+      message = '';
     } else {
-      label = textResponseLabel;
+      message = '<p>We do not check feedback every day and cannot respond to comments.</p>';
     }
 
-    const optionalHtml = html.replace('{{ label }}', label);
+    const optionalHtml = html.replace('{{ optionalTextResponseMessage }}', message);
 
     const node = this.updateHtml(optionalHtml);
     const header = node.querySelector('.nhsuk-user-feedback-form-header');

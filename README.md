@@ -38,14 +38,13 @@ The latest javascript file can be found in github releases https://github.com/nh
 ...
 
 <!-- where you want the form to appear -->
-<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint/" data-enable-text-response="false"></div>
+<div id="nhsuk-user-feedback-form" data-form-endpoint="https://example.com/endpoint/"></div>
 ```
 
 #### Attributes
 
 `data-form-endpoint` - (required) An HTTP data store endpoint to POST data to. Include the trailing slash
-`data-enable-text-response` - (optional) If "true", text responses will be enabled. If "false" or left out,
-text responses will not be disabled.
+`data-enable-text-response` - (optional) Include to enable text responses on the feedback form.
 
 ## API
 

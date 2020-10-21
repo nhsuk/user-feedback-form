@@ -9,10 +9,7 @@ import PostData from './post-data';
 import './nhsuk-feedback-form.css';
 
 function getEnableTextResponse(container) {
-  if (container.getAttribute('data-enable-text-response') === 'true') {
-    return true;
-  }
-  return false;
+  return container.hasAttribute('data-enable-text-response');
 }
 
 /**
