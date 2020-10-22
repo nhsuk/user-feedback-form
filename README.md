@@ -21,6 +21,7 @@ import userFeedbackForm from '@nhsuk/user-feedback-form';
 userFeedbackForm({
     cssSelector: "#my-div-id",
     formEndpoint: "https://example.com/my-api-endpoint/",
+    enableTextResponse: false,
 });
 ```
 
@@ -43,6 +44,7 @@ The latest javascript file can be found in github releases https://github.com/nh
 #### Attributes
 
 `data-form-endpoint` - (required) An HTTP data store endpoint to POST data to. Include the trailing slash
+`data-enable-text-response` - (optional) Include to enable text responses on the feedback form.
 
 ## API
 

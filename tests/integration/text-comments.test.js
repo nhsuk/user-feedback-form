@@ -1,7 +1,9 @@
 /* global page expect */
 
 beforeEach(async () => {
-  await page.goto('http://localhost:8080/tests/example/');
+  // Text commenting is disabled at /tests/example/index.html,
+  // we need to use enabled-text-response.html instead.
+  await page.goto('http://localhost:8080/tests/example/enabled-text-response.html');
   await page.click('.nhsuk-user-feedback-form--yes');
 });
 

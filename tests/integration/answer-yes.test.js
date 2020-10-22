@@ -14,8 +14,10 @@ describe('Can answer yes', () => {
     const yesButton = await page.$('.nhsuk-user-feedback-form--yes');
     await yesButton.click();
 
-    const labelText = await page.$eval('label', (element) => element.innerText);
-    expect(labelText).toBe('What happened to make you visit the NHS website today? (optional)');
+    const title = await page.$('h2');
+    expect(title).not.toBe(null);
+    const text = await page.evaluate((element) => element.innerText, title);
+    expect(text).toBe('Thank you for your feedback.');
   });
 
   it('should register a positive vote', async (done) => {

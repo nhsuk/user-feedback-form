@@ -10,12 +10,14 @@ describe('Can answer no', () => {
     expect(noButton).not.toBe(null);
   });
 
-  it('should proceed to next question', async () => {
+  it('should proceed to confirmation page', async () => {
     const yesButton = await page.$('.nhsuk-user-feedback-form--no');
     await yesButton.click();
 
-    const labelText = await page.$eval('label', (element) => element.innerText);
-    expect(labelText).toBe('What were you looking for? (optional)');
+    const title = await page.$('h2');
+    expect(title).not.toBe(null);
+    const text = await page.evaluate((element) => element.innerText, title);
+    expect(text).toBe('Thank you for your feedback.');
   });
 
   it('should register a negative vote', async (done) => {

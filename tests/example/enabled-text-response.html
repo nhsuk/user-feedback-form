@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="">
+
+    <title>User feedback form test page</title>
+
+    <link rel="stylesheet" href="../../node_modules/nhsuk-frontend/dist/nhsuk.css">
+
+    <script src="../../dist/user-feedback-form.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+    <div class="nhsuk-width-container">
+      <main class="nhsuk-main-wrapper">
+        <h1>User feedback form:</h1>
+        <div id="nhsuk-user-feedback-form" data-form-endpoint="http://localhost:8080/my-endpoint/" data-enable-text-response></div>
+
+        <!--
+        If you have the user-feedback-store running locally and want to test it, the endpoint setting should probably be this:
+        <div id="nhsuk-user-feedback-form" data-form-endpoint="http://localhost:7071/"></div>
+        -->
+      </main>
+    </div>
+  </body>
+</html>
