@@ -3,7 +3,6 @@
 beforeEach(async () => {
   await page.goto('http://localhost:8080/tests/example/');
   await page.click('.nhsuk-user-feedback-form--yes');
-  await page.click('.nhsuk-user-feedback-form--submit');
 });
 
 describe('Confirmation text', () => {
@@ -20,6 +19,6 @@ describe('Confirmation text', () => {
     expect(message).not.toBe(null);
 
     const text = await page.evaluate((element) => element.innerText, message);
-    expect(text).toBe('We do not check feedback every day and cannot respond to comments.');
+    expect(text).toBe('Find out how to contact the NHS if you need to speak to someone.');
   });
 });
