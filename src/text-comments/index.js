@@ -1,5 +1,8 @@
 import Screen from '../screen';
 import template from './template.html';
+import constants from '../constants';
+
+const { confirmation: { heading, noLabel, yesLabel } } = constants;
 
 export default class TextCommentsScreen extends Screen {
   getInitialQuestionResponse() {
@@ -21,14 +24,11 @@ export default class TextCommentsScreen extends Screen {
   }
 
   render() {
-    /**
-     * replace known template string with question label.
-     * If this gets any more complicated, we will have to use a proper templating library
-     */
-    const yesLabel = 'What happened to make you visit the NHS website today?';
-    const noLabel = 'What were you looking for?';
     const label = this.getInitialQuestionResponse() ? yesLabel : noLabel;
-    const html = template.replace('{{ label }}', label);
+    const html = template({
+      heading,
+      label,
+    });
 
     const node = this.updateHtml(html);
     const moreDetail = node.querySelector('#more-detail');

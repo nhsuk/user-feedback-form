@@ -3,11 +3,8 @@ const path = require('path');
 const htmlLoaderRule = {
   test: /\.html$/i,
   use: {
-    loader: 'html-loader',
-    options: {
-      attrs: false,
-      interpolate: true,
-    },
+    loader: 'simple-nunjucks-loader',
+    options: {},
   },
 };
 

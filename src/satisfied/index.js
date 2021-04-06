@@ -1,5 +1,8 @@
 import Screen from '../screen';
-import html from './template.html';
+import template from './template.html';
+import constants from '../constants';
+
+const { confirmation: { heading } } = constants;
 
 export default class SatisfiedScreen extends Screen {
   onYes() {
@@ -19,6 +22,9 @@ export default class SatisfiedScreen extends Screen {
   }
 
   render() {
+    const html = template({
+      heading,
+    });
     const node = this.updateHtml(html);
     this.addListeners(node);
   }
