@@ -23,7 +23,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "nhsuk-frontend": "^4.1.0"
+    "nhsuk-frontend": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -31,14 +31,14 @@
     "@babel/preset-env": "^7.13.10",
     "babel-loader": "^8.2.2",
     "css-loader": "^4.3.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.18.0",
     "eslint-config-nhsuk": "^1.0.0",
     "html-loader": "^0.5.5",
     "http-server": "^0.12.3",
     "jest": "^25.5.4",
     "jest-environment-puppeteer": "^4.4.0",
     "jest-puppeteer": "^4.4.0",
-    "nhsuk-frontend": "^4.1.0",
+    "nhsuk-frontend": "^5.2.0",
     "npm-run-all": "^4.1.5",
     "puppeteer": "^2.1.1",
     "start-server-and-test": "^1.12.0",
