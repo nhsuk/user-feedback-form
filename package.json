@@ -1,6 +1,6 @@
 {
   "name": "@nhsuk/user-feedback-form",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A form for collecting user feedback",
   "main": "dist/index.js",
   "directories": {
