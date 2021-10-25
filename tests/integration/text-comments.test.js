@@ -26,7 +26,8 @@ describe('Text comments', () => {
     page.once('request', (request) => {
       const data = JSON.parse(request.postData());
       // comment that actually gets posted should be trimmed to 1000 chars
-      expect(data).toEqual({ comments: 'A'.repeat(1000) });
+      expect(data.comments).toEqual('A'.repeat(1000));
+      expect(data.token).toBeTruthy();
       expect(request.url()).toBe('http://localhost:8080/my-endpoint/comments');
       done();
     });
@@ -39,7 +40,8 @@ describe('Text comments', () => {
     await textarea.type('Lorem ipsum');
     page.once('request', (request) => {
       const data = JSON.parse(request.postData());
-      expect(data).toEqual({ comments: 'Lorem ipsum' });
+      expect(data.comments).toEqual('Lorem ipsum');
+      expect(data.token).toBeTruthy();
       expect(request.url()).toBe('http://localhost:8080/my-endpoint/comments');
       done();
     });
@@ -50,7 +52,8 @@ describe('Text comments', () => {
     const submitButton = await page.$('.nhsuk-user-feedback-form--submit');
     page.once('request', (request) => {
       const data = JSON.parse(request.postData());
-      expect(data).toEqual({ comments: '' });
+      expect(data.comments).toEqual('');
+      expect(data.token).toBeTruthy();
       expect(request.url()).toBe('http://localhost:8080/my-endpoint/comments');
       done();
     });

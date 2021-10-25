@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 export default class PostData {
   /**
    * @param {string} endpoint - API endpoint to post data to
@@ -49,18 +51,7 @@ export default class PostData {
       if (request.status >= 300) {
         // eslint-disable-next-line no-console
         console.warn('Non-2xx response received from server');
-        return;
       }
-      const { response } = request;
-      let responseData;
-      try {
-        responseData = JSON.parse(response);
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.warn('JSON response could not be parsed');
-        return;
-      }
-      this.token = responseData.token;
     };
   }
 
@@ -68,6 +59,7 @@ export default class PostData {
    * send a positive response to the server
    */
   postYes() {
+    this.token = uuid();
     this.post('satisfied', {
       isSatisfied: true,
       url: this.getUrl(),
@@ -78,6 +70,7 @@ export default class PostData {
    * send a negative response to the server
    */
   postNo() {
+    this.token = uuid();
     this.post('satisfied', {
       isSatisfied: false,
       url: this.getUrl(),
