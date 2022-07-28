@@ -1,6 +1,6 @@
 {
   "name": "@nhsuk/user-feedback-form",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A form for collecting user feedback",
   "main": "dist/index.js",
   "directories": {
@@ -23,7 +23,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "nhsuk-frontend": "^4.1.0 || ^5.2.0"
+    "nhsuk-frontend": "^4.1.0 - 6.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -38,7 +38,7 @@
     "jest": "^25.5.4",
     "jest-environment-puppeteer": "^4.4.0",
     "jest-puppeteer": "^4.4.0",
-    "nhsuk-frontend": "^5.2.0",
+    "nhsuk-frontend": "^6.1.1",
     "npm-run-all": "^4.1.5",
     "puppeteer": "^2.1.1",
     "start-server-and-test": "^1.12.0",
