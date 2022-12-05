@@ -1,4 +1,4 @@
-# User Feedback Form
+# User Feedback Form 
 
 A javascript plugin to add a user feedback form to your website.
 
