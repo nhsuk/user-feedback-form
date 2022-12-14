@@ -1,14 +1,8 @@
 const path = require('path');
 
-const htmlLoaderRule = {
-  test: /\.html$/i,
-  use: {
-    loader: 'html-loader',
-    options: {
-      attrs: false,
-      interpolate: true,
-    },
-  },
+const handlebarsLoaderRule = {
+  loader: 'handlebars-loader',
+  test: /\.hbs$/,
 };
 
 const cssLoaderRule = {
@@ -34,7 +28,7 @@ const webConfig = {
           presets: ['@babel/preset-env'],
         },
       },
-    }, htmlLoaderRule, cssLoaderRule],
+    }, handlebarsLoaderRule, cssLoaderRule],
   },
   output: {
     filename: 'user-feedback-form.js',
@@ -46,7 +40,7 @@ const nodeConfig = {
   entry: ['./src/index.js'],
   mode: 'development',
   module: {
-    rules: [htmlLoaderRule, cssLoaderRule],
+    rules: [handlebarsLoaderRule, cssLoaderRule],
   },
   output: {
     filename: 'index.js',

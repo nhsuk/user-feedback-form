@@ -3,7 +3,9 @@
     <h2 class="nhsuk-card__heading nhsuk-user-feedback-form-header nhsuk-heading-s">
       Thank you for your feedback.
     </h2>
-      {{ optionalTextResponseMessage }}
+      {{# if optionalTextResponseMessage }}
+      <p>{{ optionalTextResponseMessage }}</p>
+      {{/ if }}
     <p>Find out how to <a href="/contact-us/">contact the NHS</a> if you need to speak to someone.</p>
   </div>
 </div>

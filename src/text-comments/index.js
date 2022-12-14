@@ -1,5 +1,5 @@
 import Screen from '../screen';
-import template from './template.html';
+import template from './template.hbs';
 
 export default class TextCommentsScreen extends Screen {
   getInitialQuestionResponse() {
@@ -28,7 +28,9 @@ export default class TextCommentsScreen extends Screen {
     const yesLabel = 'What happened to make you visit the NHS website today?';
     const noLabel = 'What were you looking for?';
     const label = this.getInitialQuestionResponse() ? yesLabel : noLabel;
-    const html = template.replace('{{ label }}', label);
+    const html = template({
+      label,
+    });
 
     const node = this.updateHtml(html);
     const moreDetail = node.querySelector('#more-detail');

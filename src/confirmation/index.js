@@ -1,5 +1,5 @@
 import Screen from '../screen';
-import html from './template.html';
+import template from './template.hbs';
 
 export default class ConfirmationScreen extends Screen {
   getEnableTextResponse() {
@@ -13,10 +13,12 @@ export default class ConfirmationScreen extends Screen {
     if (this.getEnableTextResponse() === false) {
       message = '';
     } else {
-      message = '<p>We do not check feedback every day and cannot respond to comments.</p>';
+      message = 'We do not check feedback every day and cannot respond to comments.';
     }
 
-    const optionalHtml = html.replace('{{ optionalTextResponseMessage }}', message);
+    const optionalHtml = template({
+      optionalTextResponseMessage: message,
+    });
 
     const node = this.updateHtml(optionalHtml);
     const header = node.querySelector('.nhsuk-user-feedback-form-header');
