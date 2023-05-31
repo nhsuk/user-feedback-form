@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class PostData {
   /**
@@ -59,7 +59,7 @@ export default class PostData {
    * send a positive response to the server
    */
   postYes() {
-    this.token = uuid();
+    this.token = uuidv4();
     this.post('satisfied', {
       isSatisfied: true,
       url: this.getUrl(),
@@ -70,7 +70,7 @@ export default class PostData {
    * send a negative response to the server
    */
   postNo() {
-    this.token = uuid();
+    this.token = uuidv4();
     this.post('satisfied', {
       isSatisfied: false,
       url: this.getUrl(),
