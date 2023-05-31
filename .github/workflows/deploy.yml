@@ -16,6 +16,22 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build:production
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        id: OwaspDepcheck
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          out: 'owasp/reports'
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload OWAPS Test Results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: '${{github.workspace}}/owasp/reports'
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

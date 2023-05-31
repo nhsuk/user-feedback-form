@@ -19,3 +19,19 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        id: OwaspDepcheck
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          out: 'owasp/reports'
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload OWAPS Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: '${{github.workspace}}/owasp/reports'
