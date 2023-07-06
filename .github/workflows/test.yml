@@ -19,3 +19,20 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'user-feedback-form'
+          path: '.'
+          format: 'HTML'
+          out: 'reports'
+          args: >
+            --failOnCVSS 7 
+            --nodePackageSkipDevDependencies
+            --nodeAuditSkipDevDependencies
+      - name: Upload OWAPS results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
