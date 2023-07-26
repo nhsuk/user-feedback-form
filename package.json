@@ -15,7 +15,8 @@
     "test-all": "npm-run-all --continue-on-error test:*",
     "test:integration": "jest -c tests/integration/jest.config.js",
     "testserver": "./node_modules/.bin/http-server",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "prepare": "husky install"
   },
   "author": "mike@mikemonteith.com",
   "license": "MIT",
@@ -35,6 +36,7 @@
     "eslint-config-nhsuk": "^1.0.0",
     "html-loader": "^0.5.5",
     "http-server": "^0.12.3",
+    "husky": "^8.0.3",
     "jest": "^25.5.4",
     "jest-environment-puppeteer": "^4.4.0",
     "jest-puppeteer": "^4.4.0",
