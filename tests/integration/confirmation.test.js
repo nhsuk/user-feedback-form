@@ -19,6 +19,6 @@ describe('Confirmation text', () => {
     expect(message).not.toBe(null);
 
     const text = await page.evaluate((element) => element.innerText, message);
-    expect(text).toBe('Find out how to contact the NHS if you need to speak to someone.');
+    expect(text).toBe('Can you help us improve the NHS website by answering some more questions about your visit today?');
   });
 });
