@@ -18,26 +18,17 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build:production
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@master
+      - name: Analyze with SonarQube
+        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on SonarQube, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}   # add the URL of your instance to the secrets of this repo with the name SONAR_HOST_URL (Settings > Secrets > Actions > add new repository secret)
         with:
-          projectBaseDir: .
-          args: >
-            -Dsonar.projectKey=nhsuk-user-feedback-form 
-            -Dsonar.sources=. 
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          args:
+            -Dsonar.projectKey=nhsuk-user-feedback-form
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.coverage.exclusions=**/*.config.js,**/coverage/**
-      # Check the Quality Gate status.
-      - name: SonarQube Quality Gate check
-        id: sonarqube-quality-gate-check
-        uses: SonarSource/sonarqube-quality-gate-action@master 
-        # Force to fail step after specific time.
-        timeout-minutes: 10
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # Only trigger if it's release tag. 
       - name: Create Release
         if: ${{ endsWith(github.ref, 'master') == false }}
