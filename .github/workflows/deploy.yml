@@ -18,14 +18,15 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build:production
-      - name: SonarQube Scan 
-        uses: sonarsource/sonarqube-scan-action@master
+      - name: Analyze with SonarQube
+        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
         env:
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
-          args: >
-            -Dsonar.projectKey=UserFeedbackForm
+          args:
+            -Dsonar.projectKey=nhsuk-user-feedback-form
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.coverage.exclusions=**/*.config.js,**/coverage/**
       # Only trigger if it's release tag. 
