@@ -18,16 +18,26 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build:production
-      - name: SonarQube Scan 
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST_URL }}
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@master
         with:
+          projectBaseDir: .
           args: >
-            -Dsonar.projectKey=UserFeedbackForm
+            -Dsonar.projectKey=nhsuk-user-feedback-form 
+            -Dsonar.sources=. 
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.coverage.exclusions=**/*.config.js,**/coverage/**
+      # Check the Quality Gate status.
+      - name: SonarQube Quality Gate check
+        id: sonarqube-quality-gate-check
+        uses: SonarSource/sonarqube-quality-gate-action@master 
+        # Force to fail step after specific time.
+        timeout-minutes: 10
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # Only trigger if it's release tag. 
       - name: Create Release
         if: ${{ endsWith(github.ref, 'master') == false }}
