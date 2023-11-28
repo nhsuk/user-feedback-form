@@ -31,6 +31,7 @@ jobs:
             -Dsonar.coverage.exclusions=**/*.config.js,**/coverage/**
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.projectKey=nhsuk-user-feedback-form
+            -Dsonar.organization=nhsdigital
             -Dsonar.sources=.
             -Dsonar.verbose=true
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
