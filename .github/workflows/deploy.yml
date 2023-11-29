@@ -18,17 +18,14 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build:production
-      - name: Analyze with SonarQube
-        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+      - name: Sonar analysis
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: .
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          args:
-            -Dsonar.projectKey=nhsuk-user-feedback-form
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.coverage.exclusions=**/*.config.js,**/coverage/**
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
       # Only trigger if it's release tag. 
       - name: Create Release
         if: ${{ endsWith(github.ref, 'master') == false }}
