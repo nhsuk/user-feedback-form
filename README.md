@@ -43,7 +43,12 @@ The latest javascript file can be found in github releases https://github.com/nh
 
 #### Attributes
 
-`data-form-endpoint` - (required) An HTTP data store endpoint to POST data to. Include the trailing slash
+`data-form-endpoint` - (required) An HTTP data store endpoint to POST data to. Include the trailing slash. The endpoint setting should probably be this:
+
+```html
+<div id="nhsuk-user-feedback-form" data-form-endpoint="http://localhost:7071/"></div>
+```
+
 `data-enable-text-response` - (optional) Include to enable text responses on the feedback form.
 
 ## API
