@@ -20,7 +20,7 @@ jobs:
       - run: npm run lint
       - run: npm test
       - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@master
+        uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
         with:
           project: 'user-feedback-form'
