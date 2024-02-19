@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run build:production
       - name: Sonar analysis
-        uses: sonarsource/sonarcloud-github-action@main
+        uses: sonarsource/sonarcloud-github-action@master
         with:
           projectBaseDir: .
         env:
