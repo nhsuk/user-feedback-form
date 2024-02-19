@@ -32,12 +32,12 @@ jobs:
             --nodePackageSkipDevDependencies
             --nodeAuditSkipDevDependencies
       - name: Upload OWAPS results
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
       - name: Sonar analysis
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@main
         with:
           projectBaseDir: .
         env:
