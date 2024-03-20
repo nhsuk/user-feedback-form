@@ -86,7 +86,7 @@ class App {
  * @param {string} settings.cssSelector - CSS selector to get the container div
  * @param {boolean} settings.enableTextResponse - Disables text responses from the form
  */
-export default function (settings = {}) {
+ const defaultFunction = function nhsUserFeedback(settings = {}) {
   const settingsWithDefaults = {
     cssSelector: '#nhsuk-user-feedback-form',
     ...settings,
@@ -94,4 +94,6 @@ export default function (settings = {}) {
 
   const app = new App(settingsWithDefaults);
   app.render();
-}
+};
+
+export default defaultFunction;
