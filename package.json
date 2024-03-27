@@ -28,7 +28,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.13.10",
     "babel-loader": "^8.2.2",
-    "css-loader": "^4.3.0",
+    "css-loader": "^6.10.0",
     "eslint": "^7.18.0",
     "eslint-config-nhsuk": "^1.0.0",
     "html-loader": "^0.5.5",
